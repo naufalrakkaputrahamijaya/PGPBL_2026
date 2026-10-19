@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Jadwal Kuliah</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <main class="schedule-page">
+    <section class="schedule-intro">
+      <p class="eyebrow"> Semester 5</p>
+      <h1> Jadwal Kuliah</h1>
+    </section>
+
+    <ion-accordion-group class="schedule-accordions" [multiple]="true" [value]="days.map(day => day.toLowerCase())">
+      <ion-accordion *ngFor="let day of days" [value]="day.toLowerCase()">
+        <ion-item slot="header" lines="none">
+          <ion-label>{{ day }}</ion-label>
+        </ion-item>
+        <div class="accordion-content" slot="content">
+          <ion-grid class="schedule-grid">
+            <ion-row class="grid-header">
+              <ion-col size="5">Mata kuliah</ion-col>
+              <ion-col size="4">Jam</ion-col>
+              <ion-col size="3">Ruang</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let schedule of schedulesForDay(day)">
+              <ion-col size="5">{{ schedule.subject }}</ion-col>
+              <ion-col class="time" size="4">{{ schedule.time }}</ion-col>
+              <ion-col size="3">{{ schedule.room }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </main>
+</ion-content>
