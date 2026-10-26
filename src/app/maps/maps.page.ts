@@ -54,9 +54,43 @@ export class MapsPage implements OnInit {
           coordinates as L.LatLngExpression
         ).addTo(this.map);
 
-        marker.bindPopup(
-          `${point.name}<br><a href="/editpoint/${key}">Edit</a> | <a href="#" class="delete-link" data-key="${key}">Delete</a>`
-        );
+        const popupContent = document.createElement('div');
+        popupContent.className = 'location-popup';
+
+        const eyebrow = document.createElement('div');
+        eyebrow.className = 'location-popup__eyebrow';
+        eyebrow.textContent = 'LOKASI TERSIMPAN';
+
+        const title = document.createElement('div');
+        title.className = 'location-popup__title';
+        title.textContent = point.name;
+
+        const description = document.createElement('div');
+        description.className = 'location-popup__description';
+        description.textContent = point.description || 'Tidak ada deskripsi.';
+
+        const actions = document.createElement('div');
+        actions.className = 'location-popup__actions';
+
+        const editLink = document.createElement('a');
+        editLink.className = 'location-popup__action location-popup__action--edit';
+        editLink.href = `/editpoint/${encodeURIComponent(key)}`;
+        editLink.textContent = 'Edit lokasi';
+
+        const deleteLink = document.createElement('a');
+        deleteLink.className = 'location-popup__action location-popup__action--delete delete-link';
+        deleteLink.href = '#';
+        deleteLink.dataset['key'] = key;
+        deleteLink.textContent = 'Hapus';
+
+        actions.append(editLink, deleteLink);
+        popupContent.append(eyebrow, title, description, actions);
+
+        marker.bindPopup(popupContent, {
+          className: 'location-popup-container',
+          minWidth: 220,
+          maxWidth: 280
+        });
       }
     }
 
@@ -69,7 +103,7 @@ export class MapsPage implements OnInit {
         deleteLink.addEventListener('click', (clickEvent) => {
           clickEvent.preventDefault();
 
-          const key = (clickEvent.target as HTMLElement).dataset['key'];
+          const key = (clickEvent.currentTarget as HTMLAnchorElement).dataset['key'];
 
           if (key) {
             this.deletePoint(key, popup.getLatLng());

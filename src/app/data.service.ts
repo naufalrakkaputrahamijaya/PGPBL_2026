@@ -4,12 +4,12 @@ import { ref, push, onValue, remove, get, update } from 'firebase/database'; imp
 @Service()
 export class DataService {
     // Save a new point 
-    savePoint(point: { name: string, coordinates: string }) { 
+    savePoint(point: { name: string, coordinates: string, description: string }) {
         const pointsRef = ref(database, 'points'); 
         return push(pointsRef, point); }
 
     // Update an existing point
-    updatePoint(pointKey: string, point: { name: string, coordinates: string }) {
+    updatePoint(pointKey: string, point: { name: string, coordinates: string, description: string }) {
         return update(ref(database, `points/${pointKey}`), point);
     }
 
@@ -43,4 +43,4 @@ export class DataService {
             });
         });
     }
-}
+} 

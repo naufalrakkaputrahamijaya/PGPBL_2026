@@ -32,6 +32,7 @@ export class EditpointPage implements OnInit {
   key = '';
   name = '';
   coordinates = '';
+  description = '';
 
   private route = inject(ActivatedRoute);
   private navCtrl = inject(NavController);
@@ -45,6 +46,7 @@ export class EditpointPage implements OnInit {
 
     this.name = point.name;
     this.coordinates = point.coordinates;
+    this.description = point.description || '';
 
     const pointCoordinates = point.coordinates
       .split(',')
@@ -96,7 +98,8 @@ export class EditpointPage implements OnInit {
       try {
         await this.dataService.updatePoint(this.key, {
           name: this.name,
-          coordinates: this.coordinates
+          coordinates: this.coordinates,
+          description: this.description
         });
 
         this.navCtrl.back();

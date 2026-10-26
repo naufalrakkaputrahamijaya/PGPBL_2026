@@ -36,3 +36,91 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.leaflet-popup.location-popup-container .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(20, 44, 39, 0.2);
+}
+
+.leaflet-popup.location-popup-container .leaflet-popup-content {
+  width: 240px !important;
+  margin: 0;
+}
+
+.leaflet-popup.location-popup-container .leaflet-popup-tip {
+  background: #fff;
+  box-shadow: 3px 3px 8px rgba(20, 44, 39, 0.08);
+}
+
+.location-popup {
+  padding: 18px 18px 14px;
+  color: #183b35;
+  font-family: var(--ion-font-family, inherit);
+}
+
+.location-popup__eyebrow {
+  margin-bottom: 5px;
+  color: #64847c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.location-popup__title {
+  overflow-wrap: anywhere;
+  color: #183b35;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.location-popup__description {
+  margin-top: 8px;
+  color: #58716b;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.location-popup__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #e8efed;
+}
+
+.location-popup__action {
+  display: inline-flex;
+  min-height: 34px;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.location-popup__action--edit {
+  background: #e8f4f0;
+  color: #176b58 !important;
+}
+
+.location-popup__action--edit:hover {
+  background: #d9eee7;
+}
+
+.location-popup__action--delete {
+  background: #fff0ed;
+  color: #b64b3c !important;
+}
+
+.location-popup__action--delete:hover {
+  background: #ffe2dc;
+}

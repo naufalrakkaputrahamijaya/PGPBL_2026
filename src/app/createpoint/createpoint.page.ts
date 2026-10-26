@@ -36,6 +36,7 @@ export class CreatepointPage implements OnInit {
   map!: L.Map;
   name = '';
   coordinates = '-7.7956,110.3695';
+  description = '';
   editMode = false;
   pointKey = '';
 
@@ -45,6 +46,7 @@ export class CreatepointPage implements OnInit {
         const pointData = {
           name: this.name,
           coordinates: this.coordinates,
+          description: this.description,
         };
 
         if (this.editMode && this.pointKey) {

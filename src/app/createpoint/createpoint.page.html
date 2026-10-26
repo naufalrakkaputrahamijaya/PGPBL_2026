@@ -4,13 +4,23 @@
       <ion-back-button defaultHref="/tabs/maps">
       </ion-back-button> 
     </ion-buttons>
-    <ion-title>createpoint</ion-title>
+    <ion-title>Tambah Lokasi</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div id="mapcreate" style="height: 400px;"></div>
-  <ion-item> <ion-label position="floating">Name</ion-label> <ion-input [(ngModel)]="name"></ion-input> </ion-item>
-  <ion-item> <ion-label position="floating">Coordinates</ion-label> <ion-input [(ngModel)]="coordinates"></ion-input>
-  </ion-item> <ion-button expand="full" (click)="save()">Save</ion-button>
+  <ion-item>
+    <ion-label position="floating">Nama Lokasi</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Koordinat</ion-label>
+    <ion-input [(ngModel)]="coordinates"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Deskripsi</ion-label>
+    <ion-textarea [(ngModel)]="description" autoGrow="true"></ion-textarea>
+  </ion-item>
+  <ion-button expand="full" (click)="save()">Simpan</ion-button>
 </ion-content>
